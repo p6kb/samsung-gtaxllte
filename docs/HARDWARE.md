@@ -1,4 +1,4 @@
-# @DEVICE_NAME@ (@MODEL@): hardware map
+# Samsung Galaxy Tab A 10.1 LTE (SM-T585): hardware map
 
 From the stock firmware and Samsung's GPL kernel source. Sources for every
 row (file, DT node, register dump): no guesses without a "?".
@@ -7,8 +7,8 @@ row (file, DT node, register dump): no guesses without a "?".
 
 | | |
 |---|---|
-| Models | @MODEL@ |
-| SoC | @SOC_NAME@ |
+| Models | SM-T585 |
+| SoC | Exynos 7870 |
 | Stock firmware tested | |
 | Bootloader revision | |
 | Samsung GPL source | opensource.samsung.com: model, version |

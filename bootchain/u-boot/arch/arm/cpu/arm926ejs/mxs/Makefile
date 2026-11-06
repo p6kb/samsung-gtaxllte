@@ -43,7 +43,7 @@ cmd_mkcsfreq_mxs =							\
 	ivt=$(word 1,$^) ;						\
 	bin=$(word 2,$^) ;						\
 	csf=$(word 3,$^) ;						\
-	sed "s@VENDOR@$(VENDOR)@g;s@BOARD@$(BOARD)@g" "$$csf" |		\
+	sed "ssamsung$(VENDOR)@g;s@BOARD@$(BOARD)@g" "$$csf" |		\
 		sed '/^\#\#Blocks/ d' > $@ ;				\
 	echo "  Blocks = $2 0x0 `stat -c '%s' $$bin` \"$$bin\" , \\" >> $@ ; \
 	echo "           $3 0x0 0x40 \"$$ivt\"" >> $@

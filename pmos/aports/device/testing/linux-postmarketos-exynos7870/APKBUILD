@@ -1,6 +1,6 @@
-# Mainline kernel for the @SOC_NAME@ (@DEVICE_NAME@).
+# Mainline kernel for the Exynos 7870 (Samsung Galaxy Tab A 10.1 LTE).
 #
-# torvalds/linux at _base plus @CODENAME@.patch: the port's kernel branch
+# torvalds/linux at _base plus gtaxllte.patch: the port's kernel branch
 # (src/linux, not committed), linearised on top of _base, so base + patch is
 # exactly the branch's tree at _commit. Regenerate both and the checksums
 # with scripts/kernel-export after an on-device test.
@@ -8,16 +8,16 @@
 # Kernel config: config-$_flavor.$arch, the bring-up config the device runs
 # plus the postmarketOS kconfigcheck categories below and the Duranium needs
 # (UKI, dm-verity, nested GPT, systemd, the USB debug gadget).
-maintainer="@MAINTAINER@"
-pkgname=linux-postmarketos-@SOC@
+maintainer=""
+pkgname=linux-postmarketos-exynos7870
 pkgver=0.0.0_git00000000
 pkgrel=0
 # the port's kernel branch commit that base + patch reproduces
 _commit=""
-# torvalds/linux commit (or tag) that @CODENAME@.patch applies to
+# torvalds/linux commit (or tag) that gtaxllte.patch applies to
 _base=""
-pkgdesc="Mainline kernel for Samsung @SOC_NAME@ devices (WIP)"
-url="https://github.com/@REPO@"
+pkgdesc="Mainline kernel for Samsung Exynos 7870 devices (WIP)"
+url="https://github.com/p6kb/samsung-gtaxllte"
 arch="aarch64"
 _carch="arm64"
 _flavor="${pkgname#linux-}"
@@ -56,7 +56,7 @@ makedepends="
 _config="config-$_flavor.$arch"
 source="
 	linux-$_base.tar.gz::https://github.com/torvalds/linux/archive/$_base.tar.gz
-	@CODENAME@.patch
+	gtaxllte.patch
 	$_config
 	"
 builddir="$srcdir/linux-$_base"
@@ -84,8 +84,8 @@ package() {
 	# Only the device's DTB: Duranium's mkosi embeds every shipped DTB in
 	# the UKI (as .dtbauto sections when there are several); one DTB gives
 	# an unconditional .dtb section, independent of the loader's DT.
-	install -Dm644 arch/"$_carch"/boot/dts/exynos/@SOC@-@CODENAME@.dtb \
-		"$pkgdir"/boot/dtbs/exynos/@SOC@-@CODENAME@.dtb
+	install -Dm644 arch/"$_carch"/boot/dts/exynos/exynos7870-gtaxllte.dtb \
+		"$pkgdir"/boot/dtbs/exynos/exynos7870-gtaxllte.dtb
 
 	rm -f "$pkgdir"/usr/lib/modules/*/build "$pkgdir"/usr/lib/modules/*/source
 

@@ -8,15 +8,15 @@
 # the owner's stock boot.img (scripts/installer/lib/bootimg.sh).
 
 deviceinfo_format_version="0"
-deviceinfo_name="@DEVICE_NAME@"
-deviceinfo_manufacturer="@VENDOR_NAME@"
-deviceinfo_codename="@DEVICE_ID@"
+deviceinfo_name="Samsung Galaxy Tab A 10.1 LTE"
+deviceinfo_manufacturer="Samsung"
+deviceinfo_codename="samsung-gtaxllte"
 deviceinfo_year=""
-deviceinfo_dtb="exynos/@SOC@-@CODENAME@"
+deviceinfo_dtb="exynos/exynos7870-gtaxllte"
 deviceinfo_arch="aarch64"
 
 # Device related
-deviceinfo_chassis="@FORM_FACTOR@"
+deviceinfo_chassis="tablet"
 deviceinfo_drm="true"
 deviceinfo_keyboard="false"
 deviceinfo_external_storage="true"

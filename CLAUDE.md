@@ -1,14 +1,8 @@
-# Agent guide: @DEVICE_NAME@ port (exynos-linux)
+# Agent guide: Samsung Galaxy Tab A 10.1 LTE port (exynos-linux)
 
-<!-- template:start (scripts/init-device removes this block) -->
-This is exynos-linux/device-template itself: the `@TOKENS@` are
-placeholders that `scripts/init-device` fills in for a port. Changes here
-must stay device-neutral (every value from config.toml); test them with a
-scratch port (`scripts/init-device` in a copy).
-<!-- template:end -->
 
 postmarketOS Duranium (immutable: systemd, UKI + systemd-boot, A/B
-systemd-sysupdate) on the @DEVICE_NAME@ (@MODEL@, @SOC_NAME@), with the
+systemd-sysupdate) on the Samsung Galaxy Tab A 10.1 LTE (SM-T585, Exynos 7870), with the
 upstream Linux kernel and our drivers. We maintain the kernel, the drivers
 and the device packages; the UIs and the rest of the OS come unchanged from
 postmarketOS, rebuilt automatically when postmarketOS publishes.

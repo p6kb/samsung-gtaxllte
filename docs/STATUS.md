@@ -1,4 +1,4 @@
-# @DEVICE_NAME@: hardware status, strictly
+# Samsung Galaxy Tab A 10.1 LTE: hardware status, strictly
 
 "Works" means **tested on the device** at that level. Two levels:
 
@@ -14,7 +14,7 @@ Legend: ✔ verified · ◐ partly / with caveats (stated) · ✘ broken ·
 
 | Block (stock spec) | Driver / state | Bring-up | Duranium | What is left |
 |---|---|---|---|---|
-| **CPU** @SOC_NAME@ | | — | — | |
+| **CPU** Exynos 7870 | | — | — | |
 | **CPU frequency** | | — | — | |
 | **CPU idle** | | — | — | |
 | **GPU** | | — | — | |

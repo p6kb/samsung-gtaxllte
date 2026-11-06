@@ -1,35 +1,4 @@
-<!-- template:start (scripts/init-device removes this block) -->
-# exynos-linux device template
-
-The starting point for every [exynos-linux](https://github.com/exynos-linux)
-device port: postmarketOS Duranium on a Samsung Exynos device, with the
-upstream Linux kernel, signed A/B updates per UI, and images rebuilt
-automatically whenever postmarketOS publishes.
-
-**Use this template**, then `scripts/init-device` (see
-[docs/PORTING.md](docs/PORTING.md)). Everything device-specific is in
-[`config.toml`](config.toml) ([docs/CONFIG.md](docs/CONFIG.md)); the
-layout is in [docs/STRUCTURE.md](docs/STRUCTURE.md).
-
-What you get, working from the first push:
-
-- **CI** (`.github/workflows/`): checks on every push; a postmarketOS
-  watcher every 6 hours that rebuilds when upstream publishes or what you
-  maintain changes; image builds for every UI x channel (release, dev);
-  signed publishing to GitHub releases; release records on GitHub Pages.
-- **Updates**: images that trust only your key and update from your
-  releases (systemd-sysupdate, boot counting, fallback).
-- **Installer** (`./setup.sh`): non-destructive live stage first, Android
-  backup, install, undo, updates; hard limits on what it may ever write.
-- **Packaging**: kernel and device aport skeletons, the USB debug layer for
-  dev images, the duranium-build hooks.
-- **Agent rules** (`CLAUDE.md`, `.claude/`), and the docs skeletons.
-
-The README below is what a port's README looks like.
-
----
-<!-- template:end -->
-# postmarketOS Duranium on the @DEVICE_NAME@ (@MODEL@)
+# postmarketOS Duranium on the Samsung Galaxy Tab A 10.1 LTE (SM-T585)
 
 Part of [exynos-linux](https://exynos-linux.github.io): upstream Linux on
 Samsung Exynos devices, with [postmarketOS](https://postmarketos.org)
@@ -37,9 +6,9 @@ Duranium on top. Not an official postmarketOS or Samsung project.
 
 | | |
 |---|---|
-| Device | @DEVICE_NAME@ (@MODEL@), @SOC_NAME@ |
+| Device | Samsung Galaxy Tab A 10.1 LTE (SM-T585), Exynos 7870 |
 | Status | bring-up ([docs/STATUS.md](docs/STATUS.md)) |
-| Images | Phosh, GNOME: [releases](https://github.com/@REPO@/releases) |
+| Images | Phosh, GNOME: [releases](https://github.com/p6kb/samsung-gtaxllte/releases) |
 | Community | [Discord](https://discord.gg/exynos-linux) |
 
 ## Install
@@ -47,8 +16,8 @@ Duranium on top. Not an official postmarketOS or Samsung project.
 On a Linux PC, with the device on USB:
 
 ```
-git clone https://github.com/@REPO@
-cd @DEVICE_ID@ && ./setup.sh
+git clone https://github.com/p6kb/samsung-gtaxllte
+cd samsung-gtaxllte && ./setup.sh
 ```
 
 It first only puts our Linux into BOOT (Android stays as it is; `./setup.sh
@@ -58,7 +27,7 @@ Requirements, every step and the way back: [docs/INSTALL.md](docs/INSTALL.md).
 ## Updates
 
 Installed devices update from the
-[releases](https://github.com/@REPO@/releases) (`updatectl update`, or the
+[releases](https://github.com/p6kb/samsung-gtaxllte/releases) (`updatectl update`, or the
 software centre): A/B, signed, with automatic fallback to the previous
 version. The images are rebuilt automatically on every postmarketOS
 publish. Release channels carry only builds verified on the device; the

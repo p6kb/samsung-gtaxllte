@@ -14,40 +14,40 @@ schema = 1
 [project]
 # The template itself: CI checks the plumbing but builds and publishes
 # nothing. scripts/init-device sets this to false.
-template = true
+template = false
 # owner/name on GitHub. CI uses $GITHUB_REPOSITORY when it is set, so a
 # fork publishes to itself.
-repo = "exynos-linux/device-template"
+repo = "p6kb/samsung-gtaxllte"
 # Shown on the site and in release notes.
-title = "Device template"
+title = "Samsung Galaxy Tab A 10.1 LTE"
 maintainers = ["@exynos-linux"]
 community = "https://discord.gg/exynos-linux"
 license = "GPL-2.0-only"
 
 [device]
 # postmarketOS naming: the device is "<vendor>-<codename>" (derived: id).
-vendor = "vendor"
-codename = "codename"
-name = "Example tablet"
-models = ["SM-XXXXX"]
+vendor = "samsung"
+codename = "gtaxllte"
+name = "Galaxy Tab A 10.1 LTE"
+models = ["SM-T585"]
 form_factor = "tablet"      # tablet | phone | other
 arch = "aarch64"
-soc = "exynosxxxx"          # lower case, as in the kernel's DT file names
-soc_name = "Exynos XXXX"
+soc = "exynos7870"          # lower case, as in the kernel's DT file names
+soc_name = "Exynos 7870"
 # bring-up: nothing published for users yet; testing: dev channel only;
 # stable: release channel with device-verified builds (pmos/VERIFIED).
 status = "bring-up"
 
 [android]
 # What the installer checks on the tablet's stock Android (adb getprop).
-product_device = "codename"           # ro.product.device
+product_device = "gtaxllte"           # ro.product.device
 # Samsung's firmware version in file names and ro.build.PDA (a regex).
-firmware_pattern = "XXXX[A-Z0-9]{8}"
+firmware_pattern = "T585[A-Z0-9]{8}"
 # The firmware the boot chain was tested on: the installer warns on others.
 tested_firmware = ""
 tested_bootloader_rev = ""
 # Model for tools/fusdl.py (Samsung's firmware server); "" = not offered.
-fus_model = ""
+fus_model = "SM-T585"
 # How Samsung formats userdata (the stock AP userdata.img), for
 # ./setup.sh restore-android: mkfs.f2fs options (at most 5 words, the
 # console runs at most 7 arguments) and the f2fs superblock feature word

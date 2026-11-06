@@ -1,4 +1,4 @@
-# @DEVICE_NAME@ (@MODEL@): port plan
+# Samsung Galaxy Tab A 10.1 LTE (SM-T585): port plan
 
 The way from stock Android to postmarketOS Duranium with every block
 working. The `setup` skill (`/setup`) writes the first version from the
@@ -11,7 +11,7 @@ research and the firmware snapshot; keep it current as blocks land
 |---|---|---|
 | Bootloader unlock on the current firmware | | |
 | KnoxGuard / carrier lock | | |
-| Upstream clocks / pinctrl for @SOC_NAME@ | | |
+| Upstream clocks / pinctrl for Exynos 7870 | | |
 
 ## Starting points
 

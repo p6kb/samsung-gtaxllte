@@ -1,0 +1,74 @@
+# Reference: <https://postmarketos.org/devicepkg>
+#
+# The device package for Duranium. It must stay UI-neutral: anything for
+# one UI goes into a subpackage that installs itself with that UI
+# (install_if), so the same package serves every image (images.uis).
+# The USB debug layer is not a dependency: dev images add it
+# (images.dev_packages), release images leave it out.
+maintainer=""
+pkgname=device-samsung-gtaxllte
+pkgdesc="Samsung Galaxy Tab A 10.1 LTE"
+pkgver=1
+pkgrel=0
+url="https://github.com/p6kb/samsung-gtaxllte"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck !strip !tracedeps"
+depends="
+	$pkgname-initramfs=$pkgver-r$pkgrel
+	linux-postmarketos-exynos7870
+	postmarketos-base
+	systemd-boot
+	zstd
+	"
+makedepends="devicepkg-dev"
+subpackages="$pkgname-initramfs:initramfs"
+source="
+	deviceinfo
+	kernel-cmdline.conf
+	firmware-path.tmpfiles
+	firmware-import.sh
+	firmware-import.service
+	nested-gpt.rules
+	system-watchdog.conf
+	"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+
+	# the owner's vendor firmware: imported from the ESP to the root
+	# partition (never in /usr, never in a published image)
+	install -Dm644 "$srcdir"/firmware-path.tmpfiles \
+		"$pkgdir"/usr/lib/tmpfiles.d/00-samsung-gtaxllte-firmware-path.conf
+	install -Dm755 "$srcdir"/firmware-import.sh \
+		"$pkgdir"/usr/libexec/samsung-gtaxllte/firmware-import
+	install -Dm644 "$srcdir"/firmware-import.service \
+		"$pkgdir"/usr/lib/systemd/system/samsung-gtaxllte-firmware-import.service
+	mkdir -p "$pkgdir"/usr/lib/systemd/system/sysinit.target.wants
+	ln -s ../samsung-gtaxllte-firmware-import.service \
+		"$pkgdir"/usr/lib/systemd/system/sysinit.target.wants/
+}
+
+initramfs() {
+	pkgdesc="$pkgdesc (initrd and early boot support)"
+	depends="kmod"
+
+	install -Dm644 "$srcdir"/nested-gpt.rules \
+		"$subpkgdir"/usr/lib/udev/rules.d/90-samsung-gtaxllte-nested-gpt.rules
+	install -Dm644 "$srcdir"/system-watchdog.conf \
+		"$subpkgdir"/usr/lib/systemd/system.conf.d/50-samsung-gtaxllte-watchdog.conf
+}
+
+sha512sums="
+6f64a072c5d94fc5040fce84e8b269fc0eb6da33dff18a15ee27795d6c0713114ef853e25100ee5fb0e3ed02c29a36ca47ece1ed76dc928fc0b380a6302881a4  deviceinfo
+b9133956459569319cb46895e8c76e75806c89dc61e378c9d20c8943c2f46eeb165614f98196f4b33974ab3d5b3be73a1204bc484db1c71ad75bace1fbc12152  kernel-cmdline.conf
+f8abfd66c30ecf37abbc9a7872de8d7152ff0289e81b144787aea04443b36a2559176f7aa7e7c2f505ba2cdb02b154d8302bece275bee67e678cf1080a13cfaa  firmware-path.tmpfiles
+02df78a47a6805122ad5e1603cd3cabc8c4788d8b61a9e9cf8e9ac78cf239b04c74c12ed533b9912dc769bfbc5869274041a6cb38d7060ff2376260f58116f38  firmware-import.sh
+f12d9c98f6608ce1b244333290596d10a7f3de0a83f86aac7761a0f7965fa3f751e1ec5d2388859c83c284c8156436d996fcd396545496f4c33e551e7e7074d2  firmware-import.service
+84dea5ddb56b6a94ffb0fcbe6896518cd5fd94a72d739657ad87245b26e79f6a71e41f1e9a9df48b93f5ae9d70894ff11e29df844413a9bc10301dc4dff58295  nested-gpt.rules
+0a1257830e299798eed25df8c1471f62bb48c0ece49daa652c0f98f98603b92cc842526aca6c8d98fe26595a5ee608b3c901b8434360505d355080bad6f4b40e  system-watchdog.conf
+"

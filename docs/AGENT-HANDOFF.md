@@ -1,4 +1,4 @@
-# Agent handoff: @DEVICE_NAME@ (read this first)
+# Agent handoff: Samsung Galaxy Tab A 10.1 LTE (read this first)
 
 A coding agent keeps this file current: what is true now, what is next.
 Newest state on top; trim history that no longer matters. Facts that live
@@ -15,8 +15,8 @@ elsewhere (config.toml, docs/STATUS.md, git log) are linked, not copied.
 
 ## Who / what
 
-- Device: @DEVICE_NAME@ (@MODEL@), @SOC_NAME@
-- Repo: https://github.com/@REPO@ (config in `config.toml`)
+- Device: Samsung Galaxy Tab A 10.1 LTE (SM-T585), Exynos 7870
+- Repo: https://github.com/p6kb/samsung-gtaxllte (config in `config.toml`)
 - Mission: postmarketOS Duranium with every piece of hardware working and
   verified on the device; signed images per UI, rebuilt automatically on
   postmarketOS publishes; the port maintains kernel, drivers and device

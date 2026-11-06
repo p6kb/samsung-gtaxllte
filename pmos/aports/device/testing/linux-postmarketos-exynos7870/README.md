@@ -1,8 +1,8 @@
 # Kernel aport
 
-- `APKBUILD`: torvalds/linux at `_base` + `@CODENAME@.patch`
-- `@CODENAME@.patch`: the port's kernel branch, linearised (generated)
-- `config-postmarketos-@SOC@.aarch64`: the full kernel config (generated)
+- `APKBUILD`: torvalds/linux at `_base` + `gtaxllte.patch`
+- `gtaxllte.patch`: the port's kernel branch, linearised (generated)
+- `config-postmarketos-exynos7870.aarch64`: the full kernel config (generated)
 
 Nothing here is edited by hand except `APKBUILD`'s comments and options:
 the patch, the config, `pkgver`, `_commit`, `_base` and the checksums come

@@ -14,7 +14,7 @@
 # swapped in whole, so a damaged or partial copy is never used.
 set -eu
 
-src=/boot/@DEVICE_ID@-firmware.tar.zst
+src=/boot/samsung-gtaxllte-firmware.tar.zst
 dst=/var/lib/firmware
 
 want=$(cut -d' ' -f1 "$src.sha256")
